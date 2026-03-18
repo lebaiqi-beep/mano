@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         ManoMano 商品采集工具
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/lebaiqi-beep/mano
 // @version      5.2
 // @description  提取 Mano 商品信息、下载首图、计算实际销售价格并导出CSV
 // @match        *://www.manomano.fr/p/*
 // @grant        GM_download
 // @run-at       document-end
+// @updateURL    https://raw.githubusercontent.com/lebaiqi-beep/mano/main/mano.user.js
+// @downloadURL  https://raw.githubusercontent.com/lebaiqi-beep/mano/main/mano.user.js
 // ==/UserScript==
 
 (function () {
