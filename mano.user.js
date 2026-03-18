@@ -86,14 +86,36 @@
     }
 
     function extractSeller() {
-        const txt = document.body ? document.body.innerText : '';
-        let m = txt.match(/Vendu par\s+([^\n\r]+)/i);
-        if (m) return cleanText(m[1]);
+    const txt = document.body ? document.body.innerText : '';
+    let m = txt.match(/Vendu par\s+([^\n\r]+)/i);
 
+    let seller = '';
+
+    if (m) {
+        seller = cleanText(m[1]);
+    } else {
         const html = document.documentElement ? document.documentElement.outerHTML : '';
         m = html.match(/Vendu par[\s\S]{0,100}?>([^<]+)</i);
-        return m ? cleanText(m[1]) : '';
+        seller = m ? cleanText(m[1]) : '';
     }
+
+    // =========================
+    // ⭐ 清洗无用内容（关键）
+    // =========================
+
+    if (seller) {
+        // 去掉 "et X autres marchands"
+        seller = seller.replace(/\s*et\s*\d+\s*autres\s*marchands?/i, '');
+
+        // 去掉可能的 "autres marchands"
+        seller = seller.replace(/autres\s*marchands?/i, '');
+
+        // 再清理空格
+        seller = seller.trim();
+    }
+
+    return seller;
+}
 
     function extractDescription() {
         const el = document.querySelector('[data-testid="description-content"]');
