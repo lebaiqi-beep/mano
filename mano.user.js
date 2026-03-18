@@ -20,6 +20,9 @@
     // 例如：['GLORY', 'ABC SHOP', 'TEST']
     // =========================
     const BLOCKED_SHOPS = ['GLORY'];
+    const BLOCKED_SHOPS = ['EMANOIL'];
+    const BLOCKED_SHOPS = ['Zama'];
+    const BLOCKED_SHOPS = ['LONGST'];
 
     function getStore() {
         try {
