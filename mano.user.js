@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ManoMano 商品采集工具
 // @namespace    https://github.com/lebaiqi-beep/mano
-// @version      5.3
+// @version      5.4
 // @description  提取 Mano 商品信息、下载首图、计算实际销售价格并导出CSV
 // @match        *://www.manomano.fr/p/*
 // @grant        GM_download
