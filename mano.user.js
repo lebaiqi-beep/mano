@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ManoMano 商品采集工具
 // @namespace    https://github.com/lebaiqi-beep/mano
-// @version      5.4
+// @version      5.5
 // @description  提取 Mano 商品信息、下载首图、计算实际销售价格并导出CSV
 // @match        *://www.manomano.fr/p/*
 // @grant        GM_download
@@ -99,22 +99,30 @@
         seller = m ? cleanText(m[1]) : '';
     }
 
-    // =========================
-    // ⭐ 清洗无用内容（关键）
-    // =========================
+// =========================
+// ⭐ 清洗无用内容（关键）
+// =========================
 
-    if (seller) {
-        // 去掉 "et X autres marchands"
-        seller = seller.replace(/\s*et\s*\d+\s*autres\s*marchands?/i, '');
+if (seller) {
 
-        // 去掉可能的 "autres marchands"
-        seller = seller.replace(/autres\s*marchands?/i, '');
+    // 处理：Zama et 1 autre marchand
+    seller = seller.replace(/\s*et\s*1\s*autre\s*marchand/i, '');
 
-        // 再清理空格
-        seller = seller.trim();
-    }
+    // 处理：Zama et 2 autres marchands / 3 / 4 / 10 ...
+    seller = seller.replace(/\s*et\s*\d+\s*autres\s*marchands?/i, '');
 
-    return seller;
+    // 兜底：没有数字的情况
+    seller = seller.replace(/\s*et\s*autre\s*marchand/i, '');
+    seller = seller.replace(/\s*et\s*autres\s*marchands?/i, '');
+
+    // 再清理残留
+    seller = seller.replace(/autres\s*marchands?/i, '');
+
+    // 清理空格
+    seller = seller.trim();
+}
+
+return seller;
 }
 
     function extractDescription() {
