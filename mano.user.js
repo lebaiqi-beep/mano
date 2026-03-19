@@ -19,7 +19,7 @@
     // 不采集的店铺名名单（可自行增加）
     // 例如：['GLORY', 'ABC SHOP', 'TEST']
     // =========================
-    const BLOCKED_SHOPS = ['GLORY', 'EMANOIL', 'Zama', 'LONGST'];
+    const BLOCKED_SHOPS = ['GLORY', 'EMANOIL', 'Zama', 'LONGST', 'RUNKA'];
 
     function getStore() {
         try {
