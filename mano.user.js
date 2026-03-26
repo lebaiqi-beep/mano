@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ManoMano 商品采集工具
 // @namespace    https://github.com/lebaiqi-beep/mano
-// @version      5.5
+// @version      5.5.1
 // @description  提取 Mano 商品信息、下载首图、计算实际销售价格并导出CSV
 // @match        *://www.manomano.fr/p/*
 // @grant        GM_download
@@ -19,7 +19,7 @@
     // 不采集的店铺名名单（可自行增加）
     // 例如：['GLORY', 'ABC SHOP', 'TEST']
     // =========================
-    const BLOCKED_SHOPS = ['GLORY', 'EMANOIL', 'Zama', 'LONGST', 'RUNKA'];
+    const BLOCKED_SHOPS = ['GLORY', 'EMANOIL', 'Zama', 'LONGST', 'RUNKA', 'NOUACART S.R.L.'];
 
     function getStore() {
         try {
